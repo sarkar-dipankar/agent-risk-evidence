@@ -1,0 +1,104 @@
+{
+  "qwen3:235b-cloud": {
+    "ok": false,
+    "latency_ms": 370.78320886939764,
+    "first_tokens": "",
+    "error": "HTTP 404: {\"error\": \"model 'qwen3:235b-cloud' not found\"}\n"
+  },
+  "qwen3-coder:480b-cloud": {
+    "ok": true,
+    "latency_ms": 1223.355459049344,
+    "first_tokens": "pong",
+    "error": null
+  },
+  "deepseek-v3.1:671b-cloud": {
+    "ok": true,
+    "latency_ms": 2353.791301138699,
+    "first_tokens": "pong",
+    "error": null
+  },
+  "deepseek-v3.2:cloud": {
+    "ok": true,
+    "latency_ms": 2662.631264189258,
+    "first_tokens": "pong",
+    "error": null
+  },
+  "deepseek-v4-flash:cloud": {
+    "ok": true,
+    "latency_ms": 5528.100307099521,
+    "first_tokens": "pong",
+    "error": null
+  },
+  "deepseek-v4-pro:cloud": {
+    "ok": true,
+    "latency_ms": 1546.159392921254,
+    "first_tokens": "pong",
+    "error": null
+  },
+  "glm-5:cloud": {
+    "ok": true,
+    "latency_ms": 1524.140807101503,
+    "first_tokens": "pong",
+    "error": null
+  },
+  "glm-5.1:cloud": {
+    "ok": true,
+    "latency_ms": 7882.166994037107,
+    "first_tokens": "pong",
+    "error": null
+  },
+  "gemma3:27b-cloud": {
+    "ok": true,
+    "latency_ms": 824.0051970351487,
+    "first_tokens": "pong\n",
+    "error": null
+  },
+  "gemma4:31b-cloud": {
+    "ok": false,
+    "latency_ms": 30111.85282608494,
+    "first_tokens": "",
+    "error": "ReadTimeout: HTTPSConnectionPool(host='ollama.com', port=443): Read timed out. (read timeout=30.0)"
+  },
+  "kimi-k2.6:cloud": {
+    "ok": true,
+    "latency_ms": 2754.5122399460524,
+    "first_tokens": "pong",
+    "error": null
+  },
+  "kimi-k2:1t-cloud": {
+    "ok": false,
+    "latency_ms": 362.9546898882836,
+    "first_tokens": "",
+    "error": "HTTP 500: {\"error\":\"Internal Server Error (ref: b475e408-a50d-479f-898f-9bccebdabf23)\"}\n"
+  },
+  "ministral-3:8b-cloud": {
+    "ok": true,
+    "latency_ms": 882.4988240376115,
+    "first_tokens": "pong",
+    "error": null
+  },
+  "nemotron-3-super:cloud": {
+    "ok": true,
+    "latency_ms": 3870.3977160621434,
+    "first_tokens": "pong",
+    "error": null
+  },
+  "mistral-large-3:cloud": {
+    "ok": false,
+    "latency_ms": 403.09168794192374,
+    "first_tokens": "",
+    "error": "HTTP 404: {\"error\": \"model 'mistral-large-3:cloud' not found\"}\n"
+  },
+  "devstral-small-2:24b-cloud": {
+    "ok": true,
+    "latency_ms": 858.5949160624295,
+    "first_tokens": "pong",
+    "error": null
+  },
+  "minimax-m2.7:cloud": {
+    "ok": true,
+    "latency_ms": 1344.097601948306,
+    "first_tokens": "\n\npong",
+    "error": null
+  }
+}

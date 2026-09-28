@@ -1,0 +1,19 @@
+[package]
+name = "ai-schema"
+description = "Agent Insure schema types and validation"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+uuid = { workspace = true }
+rust_decimal = { workspace = true }
+thiserror = { workspace = true }
+jsonschema = { workspace = true }
+
+[dev-dependencies]
+mockall = { workspace = true }

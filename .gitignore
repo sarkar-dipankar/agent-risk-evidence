@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+target/
+*.aux
+*.log
+*.blg
+*.out

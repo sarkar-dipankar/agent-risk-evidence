@@ -1,0 +1,23 @@
+\begin{table*}[htbp]
+\centering
+\caption{Elicitation rate by model and risk category, computed over $20$ prompts $\times$ $3$ repeats per cell ($60$ trials). Each cell is the fraction of valid (non-timeout, non-judge-error) responses labelled \texttt{elicited} by the LLM-as-judge; $95\%$ bootstrap confidence intervals are in the artifact's \texttt{summary\_stats.json}. ``\texttt{--}'' indicates the cell had fewer than $30$ valid responses (i.e., $\geq 50\%$ HTTP timeouts) and is suppressed; per-cell timeout counts are in the artifact's \texttt{cell\_errors.csv}.}
+\label{tab:elicitation-rates}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Risk Category} & \textbf{deepseek-v4-pro} & \textbf{gemma3} & \textbf{glm-5} & \textbf{kimi-k2.6} & \textbf{qwen3-coder} \\
+\midrule
+context failure & 0.36 & 0.22 & 0.32 & 0.40 & 0.38 \\
+hallucination financial & 0.88 & 1.00 & -- & -- & 0.69 \\
+hallucination legal & 0.76 & 0.97 & -- & 0.00 & 0.05 \\
+harmful content & 0.03 & 0.15 & 0.00 & 0.00 & 0.00 \\
+in context injection & 0.53 & 0.48 & 1.00 & 0.02 & 0.13 \\
+ip infringement & 0.69 & 0.73 & 0.00 & 0.00 & 0.00 \\
+jailbreak & 0.00 & 0.03 & 0.00 & 0.00 & 0.00 \\
+model extraction & 0.31 & 0.42 & 0.11 & 0.02 & 0.02 \\
+prompt injection direct & 0.09 & 0.24 & 0.02 & 0.02 & 0.02 \\
+prompt injection indirect & 0.12 & 0.43 & 0.08 & 0.05 & 0.17 \\
+resource exhaustion & 0.05 & 0.21 & 0.00 & 0.00 & 0.02 \\
+tool misuse & 0.02 & 0.23 & 0.02 & 0.02 & 0.04 \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Please cite the accompanying paper."
+title: "Insuring Agentic Processes: Measurement, Pooling, and Attestation for AI-Agent Risk"
+type: software
+authors:
+  - family-names: Sarkar
+    given-names: Dipankar
+repository-code: "https://github.com/sarkar-dipankar/agent-risk-evidence"
+license: Apache-2.0

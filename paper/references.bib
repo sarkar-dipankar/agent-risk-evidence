@@ -1,0 +1,524 @@
+% Verified/canonical entries. All entries cross-checked against DBLP, ACM DL,
+% USENIX, IEEE, ACL Anthology, PMLR, NIST, IETF, or official venue records.
+
+% ---------------------------------------------------------------------------
+% Prompt injection, jailbreak, indirect injection
+% ---------------------------------------------------------------------------
+
+@article{perez_2022_ignore,
+  author    = {P{\'e}rez, F{\'a}bio and Ribeiro, Ian},
+  title     = {Ignore Previous Prompt: Attack Techniques for Language Models},
+  journal   = {arXiv preprint arXiv:2211.09527},
+  year      = {2022},
+  note      = {Presented at the ML Safety Workshop, NeurIPS 2022},
+  doi       = {10.48550/arXiv.2211.09527}
+}
+
+@inproceedings{schulhoff_2023_hackaprompt,
+  author    = {Schulhoff, Sander and Pinto, Jeremy and Khan, Anaum and
+               Bouchard, Louis-Fran{\c{c}}ois and Si, Chenglei and
+               Anati, Svetlina and Tagliabue, Valen and Kost, Anson and
+               Carnahan, Christopher and Boyd-Graber, Jordan},
+  title     = {Ignore This Title and {H}ack{AP}rompt: Exposing Systemic
+               Vulnerabilities of {LLM}s Through a Global Prompt Hacking
+               Competition},
+  booktitle = {Proceedings of the 2023 Conference on Empirical Methods in
+               Natural Language Processing (EMNLP)},
+  pages     = {4945--4977},
+  year      = {2023},
+  address   = {Singapore},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.18653/v1/2023.emnlp-main.302}
+}
+
+@inproceedings{greshake_2023_not,
+  author    = {Greshake, Kai and Abdelnabi, Sahar and Mishra, Shailesh and
+               Endres, Christoph and Holz, Thorsten and Fritz, Mario},
+  title     = {Not What You've Signed Up For: Compromising Real-World
+               {LLM}-Integrated Applications with Indirect Prompt Injection},
+  booktitle = {Proceedings of the 16th ACM Workshop on Artificial
+               Intelligence and Security (AISec '23), co-located with ACM CCS},
+  pages     = {79--90},
+  year      = {2023},
+  publisher = {ACM},
+  doi       = {10.1145/3605764.3623985}
+}
+
+@inproceedings{wallace_2019_triggers,
+  author    = {Wallace, Eric and Feng, Shi and Kandpal, Nikhil and
+               Gardner, Matt and Singh, Sameer},
+  title     = {Universal Adversarial Triggers for Attacking and Analyzing {NLP}},
+  booktitle = {Proceedings of the 2019 Conference on Empirical Methods in
+               Natural Language Processing and the 9th International Joint
+               Conference on Natural Language Processing (EMNLP-IJCNLP)},
+  pages     = {2153--2162},
+  year      = {2019},
+  address   = {Hong Kong, China},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.18653/v1/D19-1221}
+}
+
+@article{yi_2024_bipia,
+  author    = {Yi, Jingwei and Xie, Yueqi and Zhu, Bin and Kiciman, Emre and
+               Sun, Guangzhong and Xie, Xing and Wu, Fangzhao},
+  title     = {Benchmarking and Defending Against Indirect Prompt Injection
+               Attacks on Large Language Models},
+  journal   = {arXiv preprint arXiv:2312.14197},
+  year      = {2024},
+  doi       = {10.48550/arXiv.2312.14197}
+}
+
+@inproceedings{zhan_2024_injecagent,
+  author    = {Zhan, Qiusi and Liang, Zhixiang and Ying, Zifan and
+               Kang, Daniel},
+  title     = {{InjecAgent}: Benchmarking Indirect Prompt Injections in
+               Tool-Integrated Large Language Model Agents},
+  booktitle = {Findings of the Association for Computational Linguistics:
+               ACL 2024},
+  pages     = {10471--10506},
+  year      = {2024},
+  address   = {Bangkok, Thailand},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.18653/v1/2024.findings-acl.624}
+}
+
+% ---------------------------------------------------------------------------
+% Agent harm benchmarks, red-teaming tools
+% ---------------------------------------------------------------------------
+
+@inproceedings{andriushchenko_2025_agentharm,
+  author    = {Andriushchenko, Maksym and Souly, Alexandra and
+               Dziemian, Mateusz and Duenas, Derek and Lin, Maxwell and
+               Wang, Justin and Hendrycks, Dan and Zou, Andy and
+               Kolter, Zico and Fredrikson, Matt and Winsor, Eric and
+               Wynne, Jerome and Gal, Yarin and Davies, Xander},
+  title     = {{AgentHarm}: A Benchmark for Measuring Harmfulness of
+               {LLM} Agents},
+  booktitle = {The Thirteenth International Conference on Learning
+               Representations (ICLR)},
+  year      = {2025},
+  doi       = {10.48550/arXiv.2410.09024}
+}
+
+@inproceedings{mazeika_2024_harmbench,
+  author    = {Mazeika, Mantas and Phan, Long and Yin, Xuwang and
+               Zou, Andy and Wang, Zifan and Mu, Norman and
+               Sakhaee, Elham and Li, Nathaniel and Basart, Steven and
+               Li, Bo and Forsyth, David and Hendrycks, Dan},
+  title     = {{HarmBench}: A Standardized Evaluation Framework for
+               Automated Red Teaming and Robust Refusal},
+  booktitle = {Proceedings of the 41st International Conference on
+               Machine Learning (ICML)},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {235},
+  pages     = {35181--35224},
+  year      = {2024},
+  publisher = {PMLR}
+}
+
+@inproceedings{debenedetti_2024_agentdojo,
+  author    = {Debenedetti, Edoardo and Zhang, Jie and
+               Balunovi{\'c}, Mislav and Beurer-Kellner, Luca and
+               Fischer, Marc and Tram{\`e}r, Florian},
+  title     = {{AgentDojo}: A Dynamic Environment to Evaluate Prompt
+               Injection Attacks and Defenses for {LLM} Agents},
+  booktitle = {Advances in Neural Information Processing Systems 37:
+               Datasets and Benchmarks Track (NeurIPS)},
+  year      = {2024}
+}
+
+@article{derczynski_2024_garak,
+  author    = {Derczynski, Leon and Galinkin, Erick and Martin, Jeffrey and
+               Majumdar, Subho and Inie, Nanna},
+  title     = {garak: A Framework for Security Probing Large Language Models},
+  journal   = {arXiv preprint arXiv:2406.11036},
+  year      = {2024},
+  doi       = {10.48550/arXiv.2406.11036}
+}
+
+@article{munoz_2024_pyrit,
+  author    = {Munoz, Gary D. Lopez and Minnich, Amanda J. and
+               Lutz, Roman and Lundeen, Richard and
+               Dheekonda, Raja Sekhar Rao and Chikanov, Nina and
+               Jagdagdorj, Bolor-Erdene and Pouliot, Martin and
+               Chawla, Shiven and Maxwell, Whitney and
+               Bullwinkel, Blake and Pratt, Katherine and
+               de Gruyter, Joris and Siska, Charlotte and
+               Bryan, Pete and Westerhoff, Tori and
+               Kawaguchi, Chang and Seifert, Christian and
+               Siva Kumar, Ram Shankar and Zunger, Yonatan},
+  title     = {{PyRIT}: A Framework for Security Risk Identification and
+               Red Teaming in Generative {AI} Systems},
+  journal   = {arXiv preprint arXiv:2410.02828},
+  year      = {2024},
+  doi       = {10.48550/arXiv.2410.02828}
+}
+
+% ---------------------------------------------------------------------------
+% Training-data extraction / memorization
+% ---------------------------------------------------------------------------
+
+@inproceedings{carlini_2021_extracting,
+  author    = {Carlini, Nicholas and Tram{\`e}r, Florian and Wallace, Eric and
+               Jagielski, Matthew and Herbert-Voss, Ariel and
+               Lee, Katherine and Roberts, Adam and Brown, Tom and
+               Song, Dawn and Erlingsson, {\'U}lfar and Oprea, Alina and
+               Raffel, Colin},
+  title     = {Extracting Training Data from Large Language Models},
+  booktitle = {Proceedings of the 30th USENIX Security Symposium},
+  pages     = {2633--2650},
+  year      = {2021},
+  publisher = {USENIX Association},
+  isbn      = {978-1-939133-24-3}
+}
+
+@article{nasr_2023_scalable_extraction,
+  author    = {Nasr, Milad and Carlini, Nicholas and Hayase, Jonathan and
+               Jagielski, Matthew and Cooper, A. Feder and Ippolito, Daphne and
+               Choquette-Choo, Christopher A. and Wallace, Eric and
+               Tram{\`e}r, Florian and Lee, Katherine},
+  title     = {Scalable Extraction of Training Data from (Production)
+               Language Models},
+  journal   = {arXiv preprint arXiv:2311.17035},
+  year      = {2023},
+  doi       = {10.48550/arXiv.2311.17035}
+}
+
+% ---------------------------------------------------------------------------
+% Privacy: k-anonymity, l-diversity, t-closeness, differential privacy, SMC
+% ---------------------------------------------------------------------------
+
+@article{sweeney_2002_kanon,
+  author  = {Sweeney, Latanya},
+  title   = {{$k$}-Anonymity: A Model for Protecting Privacy},
+  journal = {International Journal of Uncertainty, Fuzziness and
+             Knowledge-Based Systems},
+  volume  = {10},
+  number  = {5},
+  pages   = {557--570},
+  year    = {2002},
+  doi     = {10.1142/S0218488502001648}
+}
+
+@article{machanavajjhala_2007_ldiversity,
+  author    = {Machanavajjhala, Ashwin and Kifer, Daniel and
+               Gehrke, Johannes and Venkitasubramaniam, Muthuramakrishnan},
+  title     = {{$\ell$}-Diversity: Privacy Beyond {$k$}-Anonymity},
+  journal   = {ACM Transactions on Knowledge Discovery from Data (TKDD)},
+  volume    = {1},
+  number    = {1},
+  pages     = {3--es},
+  year      = {2007},
+  publisher = {ACM},
+  doi       = {10.1145/1217299.1217302}
+}
+
+@inproceedings{li_2007_tcloseness,
+  author    = {Li, Ninghui and Li, Tiancheng and Venkatasubramanian, Suresh},
+  title     = {{$t$}-Closeness: Privacy Beyond {$k$}-Anonymity and
+               {$\ell$}-Diversity},
+  booktitle = {Proceedings of the 23rd IEEE International Conference on
+               Data Engineering (ICDE)},
+  pages     = {106--115},
+  year      = {2007},
+  publisher = {IEEE},
+  doi       = {10.1109/ICDE.2007.367856}
+}
+
+@article{dwork_2014_dp,
+  author    = {Dwork, Cynthia and Roth, Aaron},
+  title     = {The Algorithmic Foundations of Differential Privacy},
+  journal   = {Foundations and Trends in Theoretical Computer Science},
+  volume    = {9},
+  number    = {3--4},
+  pages     = {211--407},
+  year      = {2014},
+  publisher = {Now Publishers},
+  doi       = {10.1561/0400000042}
+}
+
+@inproceedings{yao_1986_generate,
+  author    = {Yao, Andrew Chi-Chih},
+  title     = {How to Generate and Exchange Secrets},
+  booktitle = {Proceedings of the 27th Annual IEEE Symposium on Foundations
+               of Computer Science (FOCS)},
+  pages     = {162--167},
+  year      = {1986},
+  publisher = {IEEE},
+  doi       = {10.1109/SFCS.1986.25}
+}
+
+% ---------------------------------------------------------------------------
+% Cryptography: signatures, Merkle trees, transparency logs, supply-chain
+% ---------------------------------------------------------------------------
+
+@article{bernstein_2012_ed25519,
+  author  = {Bernstein, Daniel J. and Duif, Niels and Lange, Tanja and
+             Schwabe, Peter and Yang, Bo-Yin},
+  title   = {High-Speed High-Security Signatures},
+  journal = {Journal of Cryptographic Engineering},
+  volume  = {2},
+  number  = {2},
+  pages   = {77--89},
+  year    = {2012},
+  doi     = {10.1007/s13389-012-0027-1}
+}
+
+@inproceedings{merkle_1989_certified,
+  author    = {Merkle, Ralph C.},
+  title     = {A Certified Digital Signature},
+  booktitle = {Advances in Cryptology --- CRYPTO '89},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {435},
+  pages     = {218--238},
+  year      = {1990},
+  publisher = {Springer},
+  doi       = {10.1007/0-387-34805-0_21}
+}
+
+@inproceedings{schneier_1998_seclog,
+  author    = {Schneier, Bruce and Kelsey, John},
+  title     = {Cryptographic Support for Secure Logs on Untrusted Machines},
+  booktitle = {Proceedings of the 7th USENIX Security Symposium},
+  pages     = {53--62},
+  year      = {1998},
+  address   = {San Antonio, TX, USA},
+  publisher = {USENIX Association}
+}
+
+@techreport{laurie_2013_rfc6962,
+  author      = {Laurie, Ben and Langley, Adam and Kasper, Emilia},
+  title       = {Certificate Transparency},
+  institution = {Internet Engineering Task Force (IETF)},
+  number      = {RFC 6962},
+  type        = {Request for Comments},
+  year        = {2013},
+  month       = jun,
+  doi         = {10.17487/RFC6962}
+}
+
+@inproceedings{newman_2022_sigstore,
+  author    = {Newman, Zachary and Meyers, John Speed and
+               Torres-Arias, Santiago},
+  title     = {Sigstore: Software Signing for Everybody},
+  booktitle = {Proceedings of the 2022 ACM SIGSAC Conference on Computer
+               and Communications Security (CCS)},
+  pages     = {2353--2367},
+  year      = {2022},
+  publisher = {ACM},
+  doi       = {10.1145/3548606.3560596}
+}
+
+@inproceedings{torresarias_2019_intoto,
+  author    = {Torres-Arias, Santiago and Afzali, Hammad and
+               Kuppusamy, Trishank Karthik and Curtmola, Reza and
+               Cappos, Justin},
+  title     = {in-toto: Providing Farm-to-Table Guarantees for Bits and Bytes},
+  booktitle = {Proceedings of the 28th USENIX Security Symposium},
+  pages     = {1393--1410},
+  year      = {2019},
+  address   = {Santa Clara, CA, USA},
+  publisher = {USENIX Association},
+  isbn      = {978-1-939133-06-9}
+}
+
+@misc{nakamoto_2008_bitcoin,
+  author       = {Nakamoto, Satoshi},
+  title        = {Bitcoin: A Peer-to-Peer Electronic Cash System},
+  howpublished = {\url{https://bitcoin.org/bitcoin.pdf}},
+  year         = {2008}
+}
+
+% ---------------------------------------------------------------------------
+% Governance, risk frameworks, cyber insurance
+% ---------------------------------------------------------------------------
+
+@techreport{nist_2023_ai_rmf,
+  author      = {{National Institute of Standards and Technology}},
+  title       = {Artificial Intelligence Risk Management Framework
+                 ({AI RMF 1.0})},
+  institution = {National Institute of Standards and Technology},
+  number      = {NIST AI 100-1},
+  year        = {2023},
+  month       = jan,
+  address     = {Gaithersburg, MD},
+  doi         = {10.6028/NIST.AI.100-1}
+}
+
+@techreport{nist_2024_genai_profile,
+  author      = {{National Institute of Standards and Technology}},
+  title       = {Artificial Intelligence Risk Management Framework:
+                 Generative Artificial Intelligence Profile},
+  institution = {National Institute of Standards and Technology},
+  number      = {NIST AI 600-1},
+  year        = {2024},
+  month       = jul,
+  address     = {Gaithersburg, MD},
+  doi         = {10.6028/NIST.AI.600-1}
+}
+
+@misc{iso_2023_42001,
+  author       = {{International Organization for Standardization}},
+  title        = {{ISO/IEC 42001:2023} Information Technology ---
+                  Artificial Intelligence --- Management System},
+  howpublished = {ISO/IEC},
+  year         = {2023}
+}
+
+@misc{eu_2024_aia,
+  author       = {{European Union}},
+  title        = {Regulation ({EU}) 2024/1689 of the European Parliament
+                  and of the Council laying down harmonised rules on
+                  artificial intelligence (Artificial Intelligence Act)},
+  howpublished = {Official Journal of the European Union, L series},
+  year         = {2024},
+  month        = jul
+}
+
+@misc{mitre_atlas,
+  author       = {{MITRE Corporation}},
+  title        = {{MITRE ATLAS}: Adversarial Threat Landscape for
+                  Artificial-Intelligence Systems},
+  howpublished = {\url{https://atlas.mitre.org/}},
+  year         = {2024},
+  note         = {Accessed: 2026-05-11}
+}
+
+@misc{owasp_2025_llm_top10,
+  author       = {{OWASP Foundation}},
+  title        = {{OWASP} Top 10 for {LLM} Applications 2025},
+  howpublished = {\url{https://genai.owasp.org/llm-top-10/}},
+  year         = {2025},
+  note         = {Accessed: 2026-05-11}
+}
+
+@misc{mlcommons_2024_ailuminate,
+  author       = {{MLCommons}},
+  title        = {{AILuminate} Safety Benchmark v1.1},
+  howpublished = {\url{https://mlcommons.org/ailuminate/}},
+  year         = {2024},
+  note         = {Accessed: 2026-05-11}
+}
+
+@misc{avid_db,
+  author       = {{AI Vulnerability Database}},
+  title        = {{AVID}: AI Vulnerability Database},
+  howpublished = {\url{https://avidml.org/}},
+  year         = {2024},
+  note         = {Accessed: 2026-05-11}
+}
+
+@article{romanosky_2019_content,
+  author    = {Romanosky, Sasha and Ablon, Lillian and Kuehn, Andreas and
+               Jones, Therese},
+  title     = {Content Analysis of Cyber Insurance Policies: How Do Carriers
+               Price Cyber Risk?},
+  journal   = {Journal of Cybersecurity},
+  volume    = {5},
+  number    = {1},
+  pages     = {tyz002},
+  year      = {2019},
+  publisher = {Oxford University Press},
+  doi       = {10.1093/cybsec/tyz002}
+}
+
+% ---------------------------------------------------------------------------
+% Hallucination measurement, mondrian k-anon, composition attacks,
+% cyber-insurance, AI risk repository, NIST SSDF
+% ---------------------------------------------------------------------------
+
+@inproceedings{li_2023_halueval,
+    title     = {{H}alu{E}val: A Large-Scale Hallucination Evaluation Benchmark for Large Language Models},
+    author    = {Li, Junyi and Cheng, Xiaoxue and Zhao, Wayne Xin and Nie, Jian-Yun and Wen, Ji-Rong},
+    booktitle = {Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+    pages     = {6449--6464},
+    year      = {2023},
+    address   = {Singapore},
+    publisher = {Association for Computational Linguistics},
+    doi       = {10.18653/v1/2023.emnlp-main.397}
+}
+
+@inproceedings{lin_2022_truthfulqa,
+    title     = {{T}ruthful{QA}: Measuring How Models Mimic Human Falsehoods},
+    author    = {Lin, Stephanie and Hilton, Jacob and Evans, Owain},
+    booktitle = {Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (ACL)},
+    pages     = {3214--3252},
+    year      = {2022},
+    address   = {Dublin, Ireland},
+    publisher = {Association for Computational Linguistics},
+    doi       = {10.18653/v1/2022.acl-long.229}
+}
+
+@article{wei_2024_simpleqa,
+    title   = {Measuring Short-Form Factuality in Large Language Models},
+    author  = {Wei, Jason and Karina, Nguyen and Chung, Hyung Won and Jiao, Yunxin Joy and Papay, Spencer and Glaese, Amelia and Schulman, John and Fedus, William},
+    journal = {arXiv preprint arXiv:2411.04368},
+    year    = {2024},
+    doi     = {10.48550/arXiv.2411.04368}
+}
+
+@inproceedings{min_2023_factscore,
+    title     = {{FA}ct{S}core: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation},
+    author    = {Min, Sewon and Krishna, Kalpesh and Lyu, Xinxi and Lewis, Mike and Yih, Wen-tau and Koh, Pang Wei and Iyyer, Mohit and Zettlemoyer, Luke and Hajishirzi, Hannaneh},
+    booktitle = {Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+    pages     = {12076--12100},
+    year      = {2023},
+    address   = {Singapore},
+    publisher = {Association for Computational Linguistics},
+    doi       = {10.18653/v1/2023.emnlp-main.741}
+}
+
+@inproceedings{lefevre_2006_mondrian,
+    title     = {Mondrian Multidimensional {K}-Anonymity},
+    author    = {LeFevre, Kristen and DeWitt, David J. and Ramakrishnan, Raghu},
+    booktitle = {Proceedings of the 22nd International Conference on Data Engineering (ICDE)},
+    pages     = {25},
+    year      = {2006},
+    publisher = {IEEE},
+    doi       = {10.1109/ICDE.2006.101}
+}
+
+@inproceedings{ganta_2008_composition,
+    title     = {Composition Attacks and Auxiliary Information in Data Privacy},
+    author    = {Ganta, Srivatsava Ranjit and Kasiviswanathan, Shiva Prasad and Smith, Adam},
+    booktitle = {Proceedings of the 14th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD)},
+    pages     = {265--273},
+    year      = {2008},
+    publisher = {ACM},
+    doi       = {10.1145/1401890.1401926}
+}
+
+@article{eling_2016_cyberrisk,
+    title     = {What do we know about cyber risk and cyber risk insurance?},
+    author    = {Eling, Martin and Schnell, Werner},
+    journal   = {The Journal of Risk Finance},
+    volume    = {17},
+    number    = {5},
+    pages     = {474--491},
+    year      = {2016},
+    publisher = {Emerald},
+    doi       = {10.1108/JRF-09-2016-0122}
+}
+
+@article{slattery_2024_ai_risk_repo,
+    title   = {The {AI} Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence},
+    author  = {Slattery, Peter and Saeri, Alexander K. and Grundy, Emily A. C. and Graham, Jess and Noetel, Michael and Uuk, Risto and Dao, James and Pour, Soroush and Casper, Stephen and Thompson, Neil},
+    journal = {arXiv preprint arXiv:2408.12622},
+    year    = {2024},
+    doi     = {10.48550/arXiv.2408.12622}
+}
+
+@techreport{nist_2022_ssdf,
+    title       = {Secure Software Development Framework ({SSDF}) Version 1.1: Recommendations for Mitigating the Risk of Software Vulnerabilities},
+    author      = {Souppaya, Murugiah and Scarfone, Karen and Dodson, Donna},
+    institution = {National Institute of Standards and Technology},
+    number      = {NIST SP 800-218},
+    year        = {2022},
+    month       = feb,
+    address     = {Gaithersburg, MD},
+    doi         = {10.6028/NIST.SP.800-218}
+}
+
+@misc{kimi_k26_card,
+ author={{Moonshot AI}}, title={{Kimi K2.6} Model Card}, year={2026},
+ howpublished={\url{https://huggingface.co/moonshotai/Kimi-K2.6}}, note={Accessed September 2026}}

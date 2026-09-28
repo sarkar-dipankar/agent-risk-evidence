@@ -1,0 +1,12 @@
+\section{Background}
+\label{sec:background}
+\subsection{Insurance-Oriented Evidence}
+Cyber-insurance research motivates collecting controls and incident evidence for underwriting and claims analysis~\cite{romanosky_2019_content,eling_2016_cyberrisk}. An analogous AI workflow would need measurement tied to a deployment and its exposure, aggregation with an explicit disclosure model, and commitments that let auditors compare later records with earlier submissions. Governance frameworks motivate documentation~\cite{nist_2023_ai_rmf,nist_2024_genai_profile}; they do not make the component experiments in this paper an insurance product.
+
+\subsection{Adversarial Measurement}
+Direct and indirect prompt injection manipulate model behavior through user instructions or third-party content~\cite{perez_2022_ignore,schulhoff_2023_hackaprompt,greshake_2023_not}. BIPIA, InjecAgent, and AgentDojo evaluate related threats in distinct settings~\cite{yi_2024_bipia,zhan_2024_injecagent,debenedetti_2024_agentdojo}. HarmBench and AgentHarm examine harmful behavior~\cite{mazeika_2024_harmbench,andriushchenko_2025_agentharm}; extraction research studies disclosure of memorized material~\cite{carlini_2021_extracting,nasr_2023_scalable_extraction}. Our campaign adapts prompt scenarios into one reporting schema. It does not reproduce those benchmarks' complete environments or certify their coverage.
+
+\subsection{Aggregation and Integrity}
+$k$-anonymity groups records by quasi-identifiers~\cite{sweeney_2002_kanon}; generalization coarsens those identifiers~\cite{lefevre_2006_mondrian}. Distinct $\ell$-diversity prevents an equivalence class from containing only one sensitive value but does not remove all inference risks~\cite{machanavajjhala_2007_ldiversity}. Differential privacy requires a specified neighboring relation and a calibrated mechanism for the entire released output~\cite{dwork_2014_dp}; adding noise to one statistic does not privatize separately released partitions. Repeated releases require their own analysis~\cite{ganta_2008_composition}.
+
+Merkle commitments, Ed25519 signatures, and transparency logs support integrity and membership checking~\cite{merkle_1989_certified,bernstein_2012_ed25519,laurie_2013_rfc6962}. Sigstore and in-toto integrate related ideas for software artifacts~\cite{newman_2022_sigstore,torresarias_2019_intoto}. These tools authenticate specified bytes under trusted keys; they do not establish that a reported real-world event occurred.

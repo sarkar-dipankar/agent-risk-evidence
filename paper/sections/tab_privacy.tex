@@ -1,0 +1,25 @@
+\begin{table}[htbp]\centering\small
+\caption{Recorded pooling results at $k=5$, with $\ell=3$ or noise parameter $\varepsilon=1$ where applicable. SR is suppression rate; utility is Spearman correlation over common industry keys; HA is the homogeneity attack success rate. Empty releases have undefined utility.}
+\label{tab:privacy-summary}
+\begin{tabular}{@{}lrccc@{}}\toprule
+Method & $n$ & SR & Utility & HA \\\midrule
+Suppress & 100 & 1.000 & -- & 0.00 \\
+Suppress & 500 & 1.000 & -- & 0.00 \\
+Suppress & 1,000 & 1.000 & -- & 0.00 \\
+Suppress & 5,000 & 1.000 & -- & 0.00 \\
+\midrule
+Generalize & 100 & 0.300 & 0.943 & 0.09 \\
+Generalize & 500 & 0.024 & 0.952 & 0.00 \\
+Generalize & 1,000 & 0.000 & 1.000 & 0.00 \\
+Generalize & 5,000 & 0.000 & 1.000 & 0.00 \\
+\midrule
+$+\ell$-diversity & 100 & 0.520 & 0.800 & 0.00 \\
+$+\ell$-diversity & 500 & 0.034 & 0.952 & 0.00 \\
+$+\ell$-diversity & 1,000 & 0.000 & 1.000 & 0.00 \\
+$+\ell$-diversity & 5,000 & 0.000 & 1.000 & 0.00 \\
+\midrule
+$+$ Laplace noise & 100 & 0.300 & 0.943 & 0.09 \\
+$+$ Laplace noise & 500 & 0.024 & 0.714 & 0.00 \\
+$+$ Laplace noise & 1,000 & 0.000 & 0.691 & 0.00 \\
+$+$ Laplace noise & 5,000 & 0.000 & 0.976 & 0.00 \\
+\bottomrule\end{tabular}\end{table}

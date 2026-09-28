@@ -1,0 +1,37 @@
+\section{Results and Analysis}
+\label{sec:results}
+\subsection{Risk Taxonomy Elicitation}
+\label{sec:res-ex1}
+The recorded campaign contains $3{,}600$ trials, with $605$ HTTP failures and six additional judge errors; $2{,}989$ responses are classifiable. Their overall elicitation rate is $22.7\%$ (row-bootstrap $95\%$ CI $[21.2,24.1]$). These intervals condition on the observed responses and do not address missing outcomes or dependence among repeated prompts.
+
+The primary and secondary judges agree on $89.1\%$ of $359$ valid pairs out of $360$ sampled rows, with expected agreement $52.6\%$ and Cohen's $\kappa=0.77$. The secondary judge (Z.AI's \texttt{glm-5.1:cloud}) shares a vendor family with tested GLM-5. An informal author spot-check agrees on $46/50$ responses; it is not an independent expert-labelled gold standard.
+
+\input{sections/tab_elicitation_rates}
+
+Per-model observed rates are Gemma~3~27B $43.6\%$ (CI $[39.8,47.5]$), DeepSeek~V4~Pro $31.4\%$ ($[28.0,35.1]$), GLM-5 $18.3\%$ ($[15.0,21.8]$), Qwen3~Coder $11.9\%$ ($[9.6,14.4]$), and Kimi~K2.6 $5.7\%$ ($[3.8,7.5]$). Each denominator is that model's classifiable responses across the suite, so different missingness patterns limit direct rankings.
+
+Financial hallucination is elicited in $85.1\%$ of $134$ classifiable responses (CI $[78.4,90.3]$), all from Qwen, DeepSeek, and Gemma; GLM and Kimi return no classifiable responses in this category. Legal hallucination is $48.2\%$ of $218$ ($[41.7,54.6]$). In-context injection is $43.1\%$ of $295$ ($[37.6,48.8]$); its model-specific extremes are $60/60$ elicited for GLM and $1/60$ for Kimi. Jailbreak elicitation is $0.7\%$ ($[0.0,1.7]$) and harmful content $3.2\%$ ($[1.2,5.6]$). These contrasts describe this fixed suite. They neither identify the effects of safety training nor establish which failures dominate real deployments.
+
+\subsection{Pooling and Restricted Attack Simulators}
+\label{sec:res-ex2}
+Table~\ref{tab:privacy-summary} is generated from the recorded \texttt{privacy\_results\_v2.csv}, at $k=5$. Suppression-only publishes no records at all four portfolio sizes. Over the wider $k$ sweep this is not universal: at $k=3$, it retains $0.6\%$ of records at $n=1{,}000$ and $4.06\%$ at $n=5{,}000$. These observations concern the synthetic generator, not all organizational portfolios.
+
+Generalization at $k=5$ gives Spearman utility $0.9429$ at $n=100$, $0.9524$ at $500$, and $1.0$ at $1{,}000$ and $5{,}000$. The utility compares full-data industry means with retained/noisy means over their common industry keys. It is conditional on industries remaining represented, and does not imply preservation of individual records or subgroup estimates.
+
+At $n=100,k=5$, distinct $\ell=3$ reduces the measured homogeneity attack from $9\%$ to zero, while suppression rises from $30\%$ to $52\%$. The singleton linkage simulator reports zero for every $k=5$ configuration: surviving classes contain at least $k$ records, and suppression-only releases none. This is a restricted diagnostic, not evidence against richer linkage attacks.
+
+The Laplace-noise configuration changes ranking utility but not the published class structure used by these attacks. Its recorded utility at $n=500$ and $5{,}000$ is $0.7143$ and $0.9762$, respectively. No temporal-composition attack is evaluated, and the complete release is not claimed to satisfy differential privacy (\Cref{sec:privacy}).
+
+\input{sections/tab_privacy}
+
+\subsection{Attestation Performance}
+\label{sec:res-ex3}
+The Rust implementation processes $1.75$ million records/s in million-record signing batches, where a single signature covers the Merkle root. Valid-record verification, including signature verification and membership reconstruction, takes $38.9$--$54.3~\mu$s across the recorded batch-size sweep (\Cref{tab:attestation-perf}). Complexity remains $O(\log n)$ in the path length.
+
+The altered-record benchmark measures $36.4~\mu$s at $n=10^4$ only. The saved CSV uses batch label zero for this unparameterized Criterion benchmark; the source explicitly constructs $10{,}000$ records. Repeating this value at every batch size would not be a measured scaling result. Inclusion-proof generation from a pre-built tree takes $0.2$--$0.3~\mu$s in the saved rounded output for $n=10^3$--$10^6$.
+
+The Python reference reports $198{,}034$ records/s for million-record batch signing and $2{,}020.46$~ms for full-batch tamper checking. Those workloads use a different record schema and a different verification operation, so we do not attribute their ratio to language speed or algorithm quality. Fixed-byte-input tests establish matching Merkle roots on four reference cases; full manifest and arbitrary JSON interoperability remain separate requirements.
+
+\input{sections/tab_attestation}
+
+These are local microbenchmarks, not an end-to-end claims workflow or a matched comparison with Sigstore/Rekor or in-toto. The code audit in \Cref{sec:attestation} limits the security interpretation: membership and content integrity do not authenticate timestamp metadata, ordinal position, completeness, or real-world truth.

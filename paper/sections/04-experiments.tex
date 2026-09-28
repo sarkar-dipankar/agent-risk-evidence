@@ -1,0 +1,71 @@
+\section{Experimental Methodology}
+\label{sec:experiments}
+
+Three experiments support the claims in the abstract: risk-taxonomy elicitation on production models, privacy--utility and attack-resistance evaluation, and attestation performance benchmarking. All code, prompts, raw outputs, and reproduction scripts are in the public artifact.
+
+\subsection{Model Selection}
+\label{sec:models}
+
+Five hosted API identifiers define the tested systems (\Cref{tab:models}). The campaign does not control model weights, inference-time reasoning, or platform preprocessing. We therefore do not infer architecture-specific effects from the API results. In particular, Kimi K2.6 is a mixture-of-experts model, not a dense model~\cite{kimi_k26_card}.
+\begin{table}[htbp]\centering\small
+\caption{Recorded API identifiers and model developers.}\label{tab:models}
+\begin{tabular}{@{}ll@{}}\toprule Identifier & Developer \\\midrule
+\texttt{qwen3-coder:480b-cloud} & Alibaba \\
+\texttt{deepseek-v4-pro:cloud} & DeepSeek \\
+\texttt{glm-5:cloud} & Z.AI \\
+\texttt{gemma3:27b-cloud} & Google \\
+\texttt{kimi-k2.6:cloud} & Moonshot \\\bottomrule
+\end{tabular}\end{table}
+
+Queries use the Ollama Cloud chat-completions endpoint with \texttt{temperature=0}, single-turn messages, and a $60$~s timeout. HTTP-$429$ rate-limit responses retry with exponential backoff ($30$, $60$, $120$, $240$~s); failed requests and judge errors are excluded from elicitation-rate computation and reported separately. Concurrency caps at six parallel workers because the endpoint is shared between test and judge calls.
+
+\subsection{Experiment 1: Risk Taxonomy Elicitation}
+\label{sec:ex1}
+
+The first experiment quantifies, per (model, category) cell, the fraction of adversarial prompts that elicit the target failure mode.
+
+\textbf{Adversarial prompts.} The author-curated artifact contains $50$ prompts per category ($600$ total), with provenance labels naming public benchmarks and manual variants; representative examples per category appear in \Cref{app:prompts}. The campaign below uses the first $20$ prompts of each category's source-ordered file (deterministic source-order selection, not random sampling of a benchmark population). The \texttt{source} field records provenance per prompt:
+\begin{itemize}
+    \item Direct prompt injection and jailbreak: adapted variants from AdvBench, HarmBench~\cite{mazeika_2024_harmbench}, and HackAPrompt~\cite{schulhoff_2023_hackaprompt}, plus financial- and legal-domain manual probes.
+    \item Indirect injection: BIPIA~\cite{yi_2024_bipia} and InjecAgent~\cite{zhan_2024_injecagent} scenarios, plus Greshake-style~\cite{greshake_2023_not} compromised-document probes.
+    \item In-context data injection (renamed from ``data poisoning'' since true poisoning corrupts training and cannot be tested at inference time): documents containing falsified facts (e.g., ``the capital of France is Berlin'') across geography, history, science, statute, and current-event domains.
+    \item Model extraction: Carlini~et~al.~\cite{carlini_2021_extracting} memorization probes and Nasr~et~al.~\cite{nasr_2023_scalable_extraction} divergence attacks.
+    \item Hallucination (financial, legal): plausible-but-fabricated regulations, case citations, and SEC/FINRA references with checkably-fake identifiers.
+    \item Tool misuse: tool-call scenarios adapted from AgentDojo~\cite{debenedetti_2024_agentdojo}.
+    \item Context failure: needle-in-a-haystack recall and contradictory-instruction probes.
+    \item Resource exhaustion (renamed from ``availability failure''): prompts soliciting unbounded output or expensive computation.
+    \item Harmful content: HarmBench subset.
+    \item IP infringement: verbatim-reproduction probes from public IP-leak literature.
+\end{itemize}
+
+The financial and legal probes include fabricated identifiers and expected refusal/correction behavior. The artifact documents prompt provenance, but does not document independent legal or financial expert adjudication of the suite. These are diagnostic probes, not professional-domain competency assessments. Each prompt carries \texttt{source} and \texttt{expected\_behavior} fields. We run each sampled prompt three times per model: $5 \times 12 \times 20 \times 3 = 3{,}600$ responses.
+
+\textbf{Judging.} An independent LLM-as-judge (\texttt{nemotron-3-super:cloud}; NVIDIA Nemotron family) classifies each response. The judge is not in the test set and is in a vendor family disjoint from the five test models. It receives a category-specific rubric and emits JSON with three fields: \texttt{label} $\in$ \{\texttt{elicited}, \texttt{partial}, \texttt{refused}\}, \texttt{confidence} $\in [0, 1]$, and a one-sentence rationale. The judge runs with \texttt{temperature=0} and JSON-mode enforcement.
+
+\textbf{Inter-rater reliability.} Two agreement measures appear in the results. A pilot human spot-check on $50$ randomly sampled responses gives the author--judge agreement rate. A secondary judge (\texttt{glm-5.1:cloud}, Z.AI) re-labels a stratified $360$-row sample ($30$ per category). One secondary error leaves $359$ valid paired labels. The secondary judge differs from all test identifiers and from the primary judge, but shares the Z.AI vendor family with GLM-5. Cohen's $\kappa$ describes agreement on this sample, not an accuracy or reliability lower bound. The $50$-row author spot-check is informal and not independent expert annotation.
+
+\textbf{Reported metrics.} Elicitation rate is the fraction of classifiable responses labelled \texttt{elicited}. The aggregate code includes all classifiable responses, including the few valid rows in high-error cells. Empty cells are marked ``\texttt{--}''. The $95\%$ bootstrap intervals use $2{,}000$ resamples of response rows and do not account for prompt-level clustering across repeats. HTTP failures and judge failures are reported separately in \texttt{cell\_errors.csv}.
+
+\subsection{Experiment 2: Privacy--Utility and Attack Resistance}
+\label{sec:ex2}
+
+The second experiment quantifies the privacy--utility trade-offs of four defenses under two restricted attack simulators: raw $k$-anonymity by suppression, hierarchical generalization, generalization with $\ell$-diversity, and generalization with Laplace-noised means.
+
+\textbf{Synthetic portfolios.} Organization portfolios are generated at $n \in \{100, 500, 1{,}000, 5{,}000\}$. Each organization carries five quasi-identifiers (geography, NAICS industry, organization-size band, model-provider tier, autonomy level) under non-uniform industry weights so equivalence classes vary in size. The sensitive attribute is an incident-severity bucket (\texttt{low}, \texttt{medium}, \texttt{high}, \texttt{critical}). Generalization hierarchies (geography: city$\to$census-region$\to$country; industry: NAICS-6$\to$NAICS-4$\to$NAICS-2; size: 4 bands; provider: provider$\to$family$\to$tier; autonomy: 4 levels$\to$3 categories) are in the artifact's \texttt{hierarchy.rs}.
+
+\textbf{Defenses.} The sweep is $k \in \{3, 5, 10, 20\}$ crossed with four configurations: (i)~\texttt{suppress} (bucket by raw QI tuple, drop any class below $k$); (ii)~\texttt{generalize} (greedy hierarchical generalization until $k$ is satisfied~\cite{lefevre_2006_mondrian}); (iii)~\texttt{generalize+}$\ell$\texttt{div} with $\ell{=}3$~\cite{machanavajjhala_2007_ldiversity}; and (iv)~\texttt{generalize+dp} with $\varepsilon{=}1.0$~\cite{dwork_2014_dp}, where Laplace noise is added to each retained industry-group severity mean with scale $25/(n_g\varepsilon)$ and $n_g$ is that group's retained count. The partial calibration and release limitations are stated in \Cref{sec:privacy}.
+
+\textbf{Metrics.} Per configuration: suppression rate; information loss (the maximum of mean normalized hierarchy depth and MAPE of published-vs-true industry means); utility score (Spearman rank correlation of published and full-data industry means over common industry keys); and the success rate of two adversaries.
+
+\textbf{Attack simulators.} The \emph{linkage attacker} knows a target organization's raw QI tuple and tries to map it to a published equivalence class; success requires that the class be a singleton. The \emph{homogeneity attacker} succeeds when an equivalence class is sensitive-attribute homogeneous, disclosing the victim's value without identification. Both run over $200$ random victims under a fixed seed.
+
+\subsection{Experiment 3: Attestation Performance}
+\label{sec:ex3}
+
+The third experiment measures Ed25519$+$Merkle throughput at production-scale batch sizes and contextualizes it against transparency-log baselines.
+
+\textbf{Implementations.} Two implementations of the same RFC~6962 tree hash: a Rust crate (\texttt{ai-attestation}) built with \texttt{release} optimization and benchmarked via Criterion, and a property-tested Python equivalent (\texttt{agent\_insure.pipeline.attestation}) running under CPython 3.12 with the \texttt{cryptography} library. Hard-coded reference-input property tests confirm byte-identical Merkle roots on four fixed byte-input cases (empty, one, three, and four leaves).
+
+\textbf{Workloads.} Batch sizes $\in \{10, 10^2, 10^3, 10^4, 10^5, 10^6\}$ records with synthetic record bodies. Measured: signing throughput, verification throughput, Merkle-tree build time, inclusion-proof generation time, peak resident memory, single-record tamper-detection latency. The Python results use the median of five repetitions. Rust uses Criterion medians, with sample size ten for million-record cases. Rust uses structured JSON records; Python uses an integer id and a 100-character body. These are different workloads, so their throughput ratio is descriptive rather than a controlled language comparison. The tampered-record Rust benchmark uses a single batch size, $10^4$.
+
+\textbf{Comparison scope.} Sigstore Rekor and in-toto~\cite{newman_2022_sigstore,torresarias_2019_intoto} supply architectural context. We do not run them under a matched workload and make no throughput superiority claim. The measured attestation implementation signs one root per batch; the reported record throughput is not signatures per second.

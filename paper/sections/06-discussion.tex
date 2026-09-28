@@ -1,0 +1,20 @@
+\section{Discussion}
+\label{sec:discussion}
+\subsection{Insurance Uses and Evidence Limits}
+An underwriter could use category-level evaluation records to ask which controls were tested under which prompts and deployment configuration. Experience adjustment would require actual incidents, exposure and loss severity, with a consistent observation period. A claims auditor could verify whether a disclosed record belongs to an earlier committed batch under a trusted key. None of these uses converts prompt elicitation into a calibrated loss probability, and a signed false or incomplete report remains false or incomplete.
+
+The three components operate on different data in the current evaluation. A connected study would need multi-turn agents with real tool execution, incident definitions, controlled changes to safeguards, organization-level exposure, and a release policy analyzed as a whole. Cryptographic identity, authenticated timestamps, transparency-log anchoring, and omission detection would also need integration and evaluation.
+
+\subsection{Limitations}
+\textbf{Static model-prompt campaign.} Twenty source-ordered prompts per category, repeated three times, are not a random sample of deployment traffic. Tool-use prompts elicit text; no consequential tool action or multi-agent process is executed. The observed rates are neither population estimates nor formal lower bounds on vulnerability. All models use one hosted inference stack, whose preprocessing and moderation may affect outcomes.
+
+\textbf{Missingness and judgement.} The $611$ unclassifiable trials comprise $605$ HTTP failures and six judge errors. Three cells have no valid responses: GLM financial, GLM legal, and Kimi financial. GLM and Kimi resource-exhaustion cells retain only four and two responses. Missingness is category- and model-dependent. Row-bootstrap intervals omit prompt clustering and uncertainty in excluded outcomes. LLM-judge agreement is not accuracy, the secondary judge shares a vendor family with GLM, and the $50$-row author check does not establish independent expert calibration.
+
+\textbf{Synthetic pooling.} The generator has five quasi-identifiers and hand-set industry weights. Sensitive severity buckets are sampled independently of industry in the released code; realistic correlated loss structures are not tested. The hierarchy leaves allow $12\times18\times4\times10\times4=34{,}560$ raw combinations. Results cover a single recorded realization per size, not a multi-seed or real-consortium validation. Released code uses unordered map iteration, so a seed alone need not reproduce identical assignments and noisy rankings. The saved CSV is the source for the reported table.
+
+\textbf{Restricted privacy claims.} Singleton matching and homogeneous-class inference are only two attacks. Their measured failure does not establish protection against arbitrary background knowledge, distributional inference, or repeated releases. The Laplace ablation does not prove differential privacy for data-dependent partitions and selection. Its configuration is not a recommended production privacy policy.
+
+\textbf{Microbenchmark and implementation scope.} Rust and Python use different record schemas and verification paths. Recorded timings describe their local workloads. The Rust membership verifier does not validate ordinal position, and the manifest timestamp is unsigned. Proof security additionally assumes a trusted signing key and unambiguous interpretation of the signed payload. No end-to-end insurance deployment, timestamp authority, or key lifecycle is evaluated.
+
+\subsection{Research Artifacts}
+The public release includes the prompt suite, recorded model responses and judge labels, aggregate tables, synthetic-portfolio results, and attestation code. Prompt provenance labels are retained; they identify adapted sources rather than asserting replication of entire external benchmarks. Synthetic portfolio data does not describe actual insured organizations. Published failure rates should be interpreted within the reported prompt, missingness, and judgement limits.

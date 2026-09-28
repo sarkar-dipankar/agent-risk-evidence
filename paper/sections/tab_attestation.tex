@@ -1,0 +1,12 @@
+\begin{table}[htbp]\centering\small
+\caption{Recorded Rust Criterion medians. Sign and tree build are records/s; verification is one valid record's signature and membership check in microseconds. Record throughput must not be interpreted as signatures/s.}
+\label{tab:attestation-perf}
+\begin{tabular}{@{}rrrr@{}}\toprule
+Batch & Sign (rec/s) & Tree (rec/s) & Verify ($\mu$s) \\\midrule
+10 & 418,443 & 4,706,110 & 38.9 \\
+100 & 1,552,173 & 4,633,474 & 52.5 \\
+1,000 & 1,573,733 & 3,502,259 & 54.3 \\
+10,000 & 1,679,277 & 4,939,387 & 41.7 \\
+100,000 & 1,729,882 & 4,921,344 & 41.8 \\
+1,000,000 & 1,747,509 & 4,893,763 & 41.8 \\
+\bottomrule\end{tabular}\end{table}

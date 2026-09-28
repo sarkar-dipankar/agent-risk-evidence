@@ -1,0 +1,18 @@
+[package]
+name = "ai-benchmarks"
+description = "K-anonymity aggregation and industry benchmarks"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+ai-schema = { workspace = true }
+ai-storage = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+rand = { workspace = true }

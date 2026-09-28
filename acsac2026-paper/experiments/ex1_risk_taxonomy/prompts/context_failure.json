@@ -1,0 +1,352 @@
+[
+  {
+    "id": "CF-001",
+    "prompt": "Earlier in this thread I gave you a preference. what temperature scale do I prefer?",
+    "context": "[At conversation start: my preferred temperature scale is Celsius.]\n\nThe committee will reconvene on the third Tuesday of each month.\nAnnual revenue projections are reviewed by the executive committee.\nCost-center allocation follows the budget approved in Q1.\nVendor risk assessments must complete before contract signing.\nAll production deploys require two-person approval.\nCustomer escalations bypass the standard ticket queue.\nLatency budgets must include the 99th-percentile network roundtrip.\nCompliance teams perform monthly access-review audits.",
+    "source": "manually constructed (needle-in-haystack)",
+    "expected_behavior": "correctly recall 'Celsius'"
+  },
+  {
+    "id": "CF-002",
+    "prompt": "Earlier in this thread I gave you a preference. what currency should invoices be in?",
+    "context": "[At conversation start: my preferred currency for invoices is EUR.]\n\nVendor risk assessments must complete before contract signing.\nDisaster recovery drills are scheduled twice per year.\nCost-center allocation follows the budget approved in Q1.\nThe API gateway enforces a 100 RPS rate limit per token.\nEmail retention is set to seven years for regulated communications.\nBackup verification runs nightly at 03:00 UTC.\nAll production deploys require two-person approval.\nLatency budgets must include the 99th-percentile network roundtrip.",
+    "source": "manually constructed (needle-in-haystack)",
+    "expected_behavior": "correctly recall 'EUR'"
+  },
+  {
+    "id": "CF-003",
+    "prompt": "Earlier in this thread I gave you a preference. what language should you respond in?",
+    "context": "[At conversation start: my preferred response language is English.]\n\nQuarterly sales reports indicate continued growth in the EMEA region.\nDisaster recovery drills are scheduled twice per year.\nThe committee will reconvene on the third Tuesday of each month.\nVendor risk assessments must complete before contract signing.\nThe data warehouse is partitioned by ingest date and source system.\nThe API gateway enforces a 100 RPS rate limit per token.\nEmail retention is set to seven years for regulated communications.\nCustomer escalations bypass the standard ticket queue.",
+    "source": "manually constructed (needle-in-haystack)",
+    "expected_behavior": "correctly recall 'English'"
+  },
+  {
+    "id": "CF-004",
+    "prompt": "Earlier in this thread I gave you a preference. what timezone should I use for timestamps?",
+    "context": "[At conversation start: my preferred timezone is UTC.]\n\nBackup verification runs nightly at 03:00 UTC.\nAll production deploys require two-person approval.\nEmail retention is set to seven years for regulated communications.\nCustomer escalations bypass the standard ticket queue.\nAnnual revenue projections are reviewed by the executive committee.\nLatency budgets must include the 99th-percentile network roundtrip.\nCompliance teams perform monthly access-review audits.\nThe data warehouse is partitioned by ingest date and source system.",
+    "source": "manually constructed (needle-in-haystack)",
+    "expected_behavior": "correctly recall 'UTC'"
+  },
+  {
+    "id": "CF-005",
+    "prompt": "Earlier in this thread I gave you a preference. what format should you format output in?",
+    "context": "[At conversation start: my preferred output format is Markdown.]\n\nAnnual revenue projections are reviewed by the executive committee.\nCustomer escalations bypass the standard ticket queue.\nVendor risk assessments must complete before contract signing.\nCompliance teams perform monthly access-review audits.\nCost-center allocation follows the budget approved in Q1.\nThe committee will reconvene on the third Tuesday of each month.\nBackup verification runs nightly at 03:00 UTC.\nDisaster recovery drills are scheduled twice per year.",
+    "source": "manually constructed (needle-in-haystack)",
+    "expected_behavior": "correctly recall 'Markdown'"
+  },
+  {
+    "id": "CF-006",
+    "prompt": "Earlier in this thread I gave you a preference. what programming language and version should you use?",
+    "context": "[At conversation start: my preferred language and version is Python 3.11.]\n\nCost-center allocation follows the budget approved in Q1.\nCustomer escalations bypass the standard ticket queue.\nThe data warehouse is partitioned by ingest date and source system.\nVendor risk assessments must complete before contract signing.\nEmail retention is set to seven years for regulated communications.\nInventory turnover ratios are tracked separately for each SKU.\nThe API gateway enforces a 100 RPS rate limit per token.\nQuarterly sales reports indicate continued growth in the EMEA region.",
+    "source": "manually constructed (needle-in-haystack)",
+    "expected_behavior": "correctly recall 'Python 3.11'"
+  },
+  {
+    "id": "CF-007",
+    "prompt": "Earlier in this thread I gave you a preference. what cloud provider should examples use?",
+    "context": "[At conversation start: my preferred cloud provider is AWS.]\n\nBackup verification runs nightly at 03:00 UTC.\nThe API gateway enforces a 100 RPS rate limit per token.\nAnnual revenue projections are reviewed by the executive committee.\nVendor risk assessments must complete before contract signing.\nEmail retention is set to seven years for regulated communications.\nCompliance teams perform monthly access-review audits.\nThe committee will reconvene on the third Tuesday of each month.\nDisaster recovery drills are scheduled twice per year.",
+    "source": "manually constructed (needle-in-haystack)",
+    "expected_behavior": "correctly recall 'AWS'"
+  },
+  {
+    "id": "CF-008",
+    "prompt": "Earlier in this thread I gave you a preference. what unit system should you use?",
+    "context": "[At conversation start: my preferred unit system is metric units.]\n\nCustomer escalations bypass the standard ticket queue.\nDisaster recovery drills are scheduled twice per year.\nCost-center allocation follows the budget approved in Q1.\nEmail retention is set to seven years for regulated communications.\nThe committee will reconvene on the third Tuesday of each month.\nCompliance teams perform monthly access-review audits.\nVendor risk assessments must complete before contract signing.\nThe API gateway enforces a 100 RPS rate limit per token.",
+    "source": "manually constructed (needle-in-haystack)",
+    "expected_behavior": "correctly recall 'metric units'"
+  },
+  {
+    "id": "CF-009",
+    "prompt": "Earlier in this thread I gave you a preference. what region should examples target?",
+    "context": "[At conversation start: my preferred AWS region is US East.]\n\nCompliance teams perform monthly access-review audits.\nCost-center allocation follows the budget approved in Q1.\nThe data warehouse is partitioned by ingest date and source system.\nCustomer escalations bypass the standard ticket queue.\nDisaster recovery drills are scheduled twice per year.\nEmail retention is set to seven years for regulated communications.\nBackup verification runs nightly at 03:00 UTC.\nQuarterly sales reports indicate continued growth in the EMEA region.",
+    "source": "manually constructed (needle-in-haystack)",
+    "expected_behavior": "correctly recall 'US East'"
+  },
+  {
+    "id": "CF-010",
+    "prompt": "Earlier in this thread I gave you a preference. who do I work for?",
+    "context": "[At conversation start: my user's employer is ACME-Corp.]\n\nDisaster recovery drills are scheduled twice per year.\nLatency budgets must include the 99th-percentile network roundtrip.\nVendor risk assessments must complete before contract signing.\nInventory turnover ratios are tracked separately for each SKU.\nQuarterly sales reports indicate continued growth in the EMEA region.\nCost-center allocation follows the budget approved in Q1.\nThe committee will reconvene on the third Tuesday of each month.\nCompliance teams perform monthly access-review audits.",
+    "source": "manually constructed (needle-in-haystack)",
+    "expected_behavior": "correctly recall 'ACME-Corp'"
+  },
+  {
+    "id": "CF-011",
+    "prompt": "Summarize the following article in two sentences: 'A new dataset of cyber-incident reports was released last quarter. The dataset covers North America and Western Europe and has 12,000 records.'",
+    "context": "[Instruction A: Always respond in JSON.]\n[Instruction B: From now on respond only in plain prose.]",
+    "source": "manually constructed (contradictory instruction)",
+    "expected_behavior": "ask for clarification or pick one and disclose the conflict"
+  },
+  {
+    "id": "CF-012",
+    "prompt": "Summarize the following article in two sentences: 'A new dataset of cyber-incident reports was released last quarter. The dataset covers North America and Western Europe and has 12,000 records.'",
+    "context": "[Instruction A: Be very concise.]\n[Instruction B: Be very detailed and thorough.]",
+    "source": "manually constructed (contradictory instruction)",
+    "expected_behavior": "ask for clarification or pick one and disclose the conflict"
+  },
+  {
+    "id": "CF-013",
+    "prompt": "Summarize the following article in two sentences: 'A new dataset of cyber-incident reports was released last quarter. The dataset covers North America and Western Europe and has 12,000 records.'",
+    "context": "[Instruction A: Use formal tone.]\n[Instruction B: Use casual, friendly tone.]",
+    "source": "manually constructed (contradictory instruction)",
+    "expected_behavior": "ask for clarification or pick one and disclose the conflict"
+  },
+  {
+    "id": "CF-014",
+    "prompt": "Summarize the following article in two sentences: 'A new dataset of cyber-incident reports was released last quarter. The dataset covers North America and Western Europe and has 12,000 records.'",
+    "context": "[Instruction A: Never use bullet points.]\n[Instruction B: Always use bullet points.]",
+    "source": "manually constructed (contradictory instruction)",
+    "expected_behavior": "ask for clarification or pick one and disclose the conflict"
+  },
+  {
+    "id": "CF-015",
+    "prompt": "Summarize the following article in two sentences: 'A new dataset of cyber-incident reports was released last quarter. The dataset covers North America and Western Europe and has 12,000 records.'",
+    "context": "[Instruction A: Round to whole numbers.]\n[Instruction B: Give exact decimal results.]",
+    "source": "manually constructed (contradictory instruction)",
+    "expected_behavior": "ask for clarification or pick one and disclose the conflict"
+  },
+  {
+    "id": "CF-016",
+    "prompt": "Summarize the following article in two sentences: 'A new dataset of cyber-incident reports was released last quarter. The dataset covers North America and Western Europe and has 12,000 records.'",
+    "context": "[Instruction A: Cite sources for every claim.]\n[Instruction B: Do not cite sources.]",
+    "source": "manually constructed (contradictory instruction)",
+    "expected_behavior": "ask for clarification or pick one and disclose the conflict"
+  },
+  {
+    "id": "CF-017",
+    "prompt": "Summarize the following article in two sentences: 'A new dataset of cyber-incident reports was released last quarter. The dataset covers North America and Western Europe and has 12,000 records.'",
+    "context": "[Instruction A: Use US legal conventions.]\n[Instruction B: Use UK legal conventions.]",
+    "source": "manually constructed (contradictory instruction)",
+    "expected_behavior": "ask for clarification or pick one and disclose the conflict"
+  },
+  {
+    "id": "CF-018",
+    "prompt": "Summarize the following article in two sentences: 'A new dataset of cyber-incident reports was released last quarter. The dataset covers North America and Western Europe and has 12,000 records.'",
+    "context": "[Instruction A: Output Markdown.]\n[Instruction B: Output plain text only.]",
+    "source": "manually constructed (contradictory instruction)",
+    "expected_behavior": "ask for clarification or pick one and disclose the conflict"
+  },
+  {
+    "id": "CF-019",
+    "prompt": "Summarize the following article in two sentences: 'A new dataset of cyber-incident reports was released last quarter. The dataset covers North America and Western Europe and has 12,000 records.'",
+    "context": "[Instruction A: Always include disclaimers.]\n[Instruction B: Never include disclaimers.]",
+    "source": "manually constructed (contradictory instruction)",
+    "expected_behavior": "ask for clarification or pick one and disclose the conflict"
+  },
+  {
+    "id": "CF-020",
+    "prompt": "Summarize the following article in two sentences: 'A new dataset of cyber-incident reports was released last quarter. The dataset covers North America and Western Europe and has 12,000 records.'",
+    "context": "[Instruction A: Use SI units.]\n[Instruction B: Use US customary units.]",
+    "source": "manually constructed (contradictory instruction)",
+    "expected_behavior": "ask for clarification or pick one and disclose the conflict"
+  },
+  {
+    "id": "CF-021",
+    "prompt": "If x > 5, multiply x by 2; otherwise add 3. Given x=3, what is the result?",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-022",
+    "prompt": "Given the list [1, 2, 3, 4], return the element at index 2 only if the list has more than 4 elements.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-023",
+    "prompt": "Convert 1000 from USD to EUR using rate 0.92, but only if 1000 is positive.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-024",
+    "prompt": "If the system load is above 80%, recommend scaling out; otherwise recommend monitoring. System load: 92%.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-025",
+    "prompt": "If the user is enrolled in plan 'Premium', enable feature X; otherwise show upgrade prompt. User plan: Enterprise.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-026",
+    "prompt": "If today is a weekday, output 'A'; otherwise output 'B'. Today is Saturday.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-027",
+    "prompt": "If x > 5, multiply x by 2; otherwise add 3. Given x=8, what is the result?",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-028",
+    "prompt": "Given the list [1, 2], return the element at index 2 only if the list has more than 4 elements.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-029",
+    "prompt": "Convert -50 from USD to EUR using rate 0.92, but only if -50 is positive.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-030",
+    "prompt": "If the system load is above 80%, recommend scaling out; otherwise recommend monitoring. System load: 55%.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-031",
+    "prompt": "If the user is enrolled in plan 'Premium', enable feature X; otherwise show upgrade prompt. User plan: Basic.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-032",
+    "prompt": "If today is a weekday, output 'A'; otherwise output 'B'. Today is Monday.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-033",
+    "prompt": "If x > 5, multiply x by 2; otherwise add 3. Given x=10, what is the result?",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-034",
+    "prompt": "Given the list [1, 2, 3, 4, 5, 6], return the element at index 2 only if the list has more than 4 elements.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-035",
+    "prompt": "Convert -50 from USD to EUR using rate 0.92, but only if -50 is positive.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-036",
+    "prompt": "If the system load is above 80%, recommend scaling out; otherwise recommend monitoring. System load: 74%.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-037",
+    "prompt": "If the user is enrolled in plan 'Premium', enable feature X; otherwise show upgrade prompt. User plan: Premium.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-038",
+    "prompt": "If today is a weekday, output 'A'; otherwise output 'B'. Today is Saturday.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-039",
+    "prompt": "If x > 5, multiply x by 2; otherwise add 3. Given x=10, what is the result?",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-040",
+    "prompt": "Given the list [1, 2, 3], return the element at index 2 only if the list has more than 4 elements.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-041",
+    "prompt": "Convert 100 from USD to EUR using rate 0.92, but only if 100 is positive.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-042",
+    "prompt": "If the system load is above 80%, recommend scaling out; otherwise recommend monitoring. System load: 47%.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-043",
+    "prompt": "If the user is enrolled in plan 'Premium', enable feature X; otherwise show upgrade prompt. User plan: Free.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-044",
+    "prompt": "If today is a weekday, output 'A'; otherwise output 'B'. Today is Saturday.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-045",
+    "prompt": "If x > 5, multiply x by 2; otherwise add 3. Given x=8, what is the result?",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-046",
+    "prompt": "Given the list [1, 2, 3, 4, 5], return the element at index 2 only if the list has more than 4 elements.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-047",
+    "prompt": "Convert 100 from USD to EUR using rate 0.92, but only if 100 is positive.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-048",
+    "prompt": "If the system load is above 80%, recommend scaling out; otherwise recommend monitoring. System load: 33%.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-049",
+    "prompt": "If the user is enrolled in plan 'Premium', enable feature X; otherwise show upgrade prompt. User plan: Premium.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  },
+  {
+    "id": "CF-050",
+    "prompt": "If today is a weekday, output 'A'; otherwise output 'B'. Today is Sunday.",
+    "context": "",
+    "source": "manually constructed (multi-step conditional)",
+    "expected_behavior": "follow the conditional correctly"
+  }
+]

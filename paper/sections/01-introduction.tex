@@ -1,0 +1,16 @@
+\section{Introduction}
+\label{sec:introduction}
+AI systems can fail differently across tasks even when the same model is used. In our single-turn adversarial prompt campaign, financial-domain hallucination and in-context injection are elicited in $85.1\%$ and $43.1\%$ of classifiable responses, while jailbreak and harmful-content probes elicit at $0.7\%$ and $3.2\%$. The campaign does not test vendor safety scores or deployed agents. It motivates retaining category-level evidence rather than collapsing this particular suite into a single average.
+
+Insurance provides one possible use for such evidence: underwriting can compare documented controls, experience adjustment can incorporate verified incident records, and claims auditing can check whether disclosed records match earlier commitments~\cite{romanosky_2019_content,eling_2016_cyberrisk}. None of these uses follows directly from prompt elicitation rates. Pricing additionally requires exposure denominators, loss severity, policy coverage, dependence across insureds, and calibration to actual deployments.
+
+We examine three components of that evidence workflow: measurement, private pooling, and attestation. The components reuse existing adversarial-evaluation methods, generalization and diversity constraints, and Ed25519--Merkle commitments. Their contribution is a concrete implementation and a set of component evaluations, not new cryptographic primitives or an actuarial pricing model.
+
+\subsection{Contributions}
+\begin{enumerate}
+\item \textbf{Measurement.} Twelve prompt categories, five hosted models, twenty prompts per category and three repeats produce $3{,}600$ trials. We report classifiable-response elicitation rates, missingness, and inter-judge agreement, distinguishing these from deployment incident rates.
+\item \textbf{Pooling.} A synthetic-portfolio comparison measures suppression, ranking utility, and two specified attack simulators for suppression, hierarchical generalization, distinct $\ell$-diversity, and a Laplace-noise ablation. The results establish behavior in the tested generator and attack models; they do not establish anonymity against arbitrary auxiliary information.
+\item \textbf{Attestation.} A Rust Ed25519--Merkle implementation and Python reference support batched integrity checks. We report measured signing throughput and $O(\log n)$ membership-proof verification costs, while identifying unsigned metadata and untested identity/time infrastructure.
+\end{enumerate}
+
+The public artifact is \url{https://github.com/sarkar-dipankar/agent-risk-evidence}. It includes recorded results, prompts, code, and an audit of manuscript-to-artifact consistency. No connected multi-turn agent or real insurance portfolio is evaluated.

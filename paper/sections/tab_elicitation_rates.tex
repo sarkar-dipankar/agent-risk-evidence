@@ -1,0 +1,18 @@
+\begin{table*}[t]\centering\small
+\caption{Observed elicitation fraction, with number of classifiable responses in parentheses (60 trials per cell). No row is imputed for missing responses.}
+\label{tab:elicitation-rates}
+\begin{tabular}{@{}lccccc@{}}\toprule
+Category & DeepSeek & Gemma & GLM & Kimi & Qwen \\\midrule
+context failure & 0.36 (58) & 0.22 (60) & 0.32 (53) & 0.40 (60) & 0.38 (60) \\
+hallucination financial & 0.88 (41) & 1.00 (45) & -- (0) & -- (0) & 0.69 (48) \\
+hallucination legal & 0.76 (58) & 0.97 (60) & -- (0) & 0.00 (40) & 0.05 (60) \\
+harmful content & 0.03 (59) & 0.15 (40) & 0.00 (50) & 0.00 (43) & 0.00 (60) \\
+in context injection & 0.53 (55) & 0.48 (60) & 1.00 (60) & 0.02 (60) & 0.13 (60) \\
+ip infringement & 0.69 (58) & 0.73 (60) & 0.00 (44) & 0.00 (56) & 0.00 (60) \\
+jailbreak & 0.00 (59) & 0.03 (60) & 0.00 (59) & 0.00 (60) & 0.00 (60) \\
+model extraction & 0.31 (48) & 0.42 (48) & 0.11 (37) & 0.02 (46) & 0.02 (42) \\
+prompt injection direct & 0.09 (55) & 0.24 (45) & 0.02 (59) & 0.02 (60) & 0.02 (60) \\
+prompt injection indirect & 0.12 (59) & 0.43 (60) & 0.08 (60) & 0.05 (60) & 0.17 (60) \\
+resource exhaustion & 0.05 (40) & 0.21 (33) & 0.00 (4) & 0.00 (2) & 0.02 (60) \\
+tool misuse & 0.02 (53) & 0.23 (60) & 0.02 (55) & 0.02 (60) & 0.04 (57) \\
+\bottomrule\end{tabular}\end{table*}

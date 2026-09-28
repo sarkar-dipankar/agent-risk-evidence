@@ -1,0 +1,24 @@
+[package]
+name = "ai-storage"
+description = "Storage abstractions for Agent Insure data"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+ai-schema = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+sqlx = { workspace = true }
+uuid = { workspace = true }
+async-trait = { workspace = true }
+rust_decimal = { workspace = true }
+
+[features]
+default = ["sqlite"]
+sqlite = []
+postgres = []

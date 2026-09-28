@@ -1,0 +1,15 @@
+{
+  "n": 359,
+  "p_observed": 0.8913649025069638,
+  "p_expected": 0.5264779137343751,
+  "kappa": 0.7705807170479124,
+  "primary_judge": "nemotron-3-super:cloud",
+  "secondary_judge": "glm-5.1:cloud",
+  "secondary_errors": 1,
+  "stratified_sample_per_category": 30,
+  "human_pilot": {
+    "n": 50,
+    "agreement": 0.92,
+    "note": "informal manual review of 50 random responses"
+  }
+}

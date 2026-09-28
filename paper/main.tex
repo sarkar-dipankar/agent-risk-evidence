@@ -1,0 +1,73 @@
+% Prior submission: ACSAC 2026, submission 194.
+\documentclass[conference,compsoc]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{subcaption}
+\usepackage{url}
+
+\pgfplotsset{compat=1.18}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    tabsize=2,
+    captionpos=b
+}
+
+\begin{document}
+
+\title{Insuring Agentic Processes: Measurement, Pooling, and Attestation for AI-Agent Risk}
+
+\author{
+\IEEEauthorblockN{Dipankar Sarkar}
+\IEEEauthorblockA{Skelf Research\\
+Email: dipankar@skelfresearch.com}
+}
+
+\maketitle
+
+\begin{abstract}
+Insurance-oriented evidence for AI systems requires measurements, cross-organizational aggregation, and records whose integrity can be checked. We study these as three separate components rather than an evaluated end-to-end insurance system. A twelve-category, single-turn prompt suite yields $3{,}600$ trials across five hosted models, of which $2{,}989$ are classifiable. On these observed responses, financial-domain hallucination and in-context injection have elicitation rates of $85.1\%$ and $43.1\%$, compared with $0.7\%$ for jailbreak prompts. These are prompt-suite outcomes, not estimates of deployment incident frequency or insured loss. Two LLM judges agree with Cohen's $\kappa=0.77$ on $359$ valid paired labels; the secondary judge shares a vendor family with one tested model. In synthetic portfolios of $100$--$5{,}000$ organizations, suppression-only $k$-anonymity at $k=5$ discards every record, while hierarchical generalization retains industry-ranking correlations of at least $0.95$ for $n\geq500$. Distinct $\ell$-diversity eliminates the measured homogeneity attack at a suppression cost. A Laplace-noise ablation is evaluated for utility, without claiming differential privacy for the complete data-dependent release. Finally, an Ed25519--Merkle implementation processes $1.75$ million records/s in million-record signing batches, with measured single-record verification times of $39$--$54~\mu$s. Attestation authenticates committed content, not incident completeness, truth, or time. Public artifacts expose the component measurements and their limits as a basis for subsequent deployment and actuarial studies.
+\end{abstract}
+
+\begin{IEEEkeywords}
+AI agents, prompt injection, privacy-preserving benchmarking, cryptographic attestation, risk taxonomy
+\end{IEEEkeywords}
+
+\input{sections/01-introduction}
+\input{sections/02-background}
+\input{sections/03-framework}
+\input{sections/04-experiments}
+\input{sections/05-results}
+\input{sections/06-discussion}
+\input{sections/07-relatedwork}
+\input{sections/08-conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\clearpage
+\appendices
+\input{sections/09-appendix}
+
+\end{document}

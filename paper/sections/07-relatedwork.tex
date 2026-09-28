@@ -1,0 +1,11 @@
+\section{Related Work}
+\label{sec:relatedwork}
+MITRE ATLAS, OWASP LLM Top~10, NIST's GenAI profile, AILuminate, AVID, and the AI Risk Repository offer different risk organizations~\cite{mitre_atlas,owasp_2025_llm_top10,nist_2024_genai_profile,mlcommons_2024_ailuminate,avid_db,slattery_2024_ai_risk_repo}. Our taxonomy is a reporting choice for the tested suite; it is not evidence that existing taxonomies lack measurable categories. Table~\ref{tab:crosswalk} documents conceptual overlap.
+
+HarmBench, AgentHarm, BIPIA, InjecAgent, AgentDojo, and HackAPrompt supply related adversarial-evaluation settings~\cite{mazeika_2024_harmbench,andriushchenko_2025_agentharm,yi_2024_bipia,zhan_2024_injecagent,debenedetti_2024_agentdojo,schulhoff_2023_hackaprompt}; garak and PyRIT automate probing~\cite{derczynski_2024_garak,munoz_2024_pyrit}. Our contribution is component evidence for a proposed reporting workflow, not a stronger agent benchmark or a demonstrated deployment-risk estimator.
+
+TruthfulQA, HaluEval, FActScore, and SimpleQA examine factuality under their respective definitions~\cite{lin_2022_truthfulqa,li_2023_halueval,min_2023_factscore,wei_2024_simpleqa}. The financial and legal probes here instead test whether models accept fabricated identifiers and invent details. Their expert validity and relation to practical professional tasks require separate study.
+
+The aggregation primitives are established~\cite{sweeney_2002_kanon,lefevre_2006_mondrian,machanavajjhala_2007_ldiversity,dwork_2014_dp}. Composition attacks motivate care with repeated releases~\cite{ganta_2008_composition}; the present synthetic comparison does not resolve them. Its contribution is the recorded suppression, utility, and restricted-attack behavior for a specified generator.
+
+Tamper-evident logging, Certificate Transparency, Sigstore, and in-toto motivate integrity and provenance systems~\cite{schneier_1998_seclog,laurie_2013_rfc6962,newman_2022_sigstore,torresarias_2019_intoto}. We reuse their underlying signature and Merkle concepts for record batches. The current microbenchmarks add an implementation measurement, while authenticated time, external identity, and completeness remain open integration tasks.

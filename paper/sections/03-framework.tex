@@ -1,0 +1,98 @@
+\section{Pipeline}
+\label{sec:framework}
+
+The proposed workflow connects the three operations introduced in \Cref{sec:background}: measurement (\Cref{sec:taxonomy}), pooling (\Cref{sec:privacy}), and attestation (\Cref{sec:attestation}). Each operation's threat model is stated in \Cref{sec:threatmodel}.
+
+\subsection{Measurement: Risk Taxonomy}
+\label{sec:taxonomy}
+
+The taxonomy comprises three families and twelve subcategories. The metric is \emph{elicitation rate}: the fraction of adversarial probes for which the target failure mode appears in the model's response. The term ``detection rate'' is avoided because it inverts polarity (an $0.8$ elicitation rate means the model is more vulnerable, not safer). The category files and expected-behavior rubrics specify the campaign inputs. Table~\ref{tab:crosswalk} gives an author-supplied conceptual mapping to OWASP~2025~\cite{owasp_2025_llm_top10}; related ATLAS attack families provide context~\cite{mitre_atlas}. This mapping is not a claim of exhaustive coverage or independent expert validation. The saved artifact does not establish a preregistered taxonomy-selection process.
+
+\subsubsection{Security risks (5 subcategories)} adversarial attacks that manipulate model behavior:
+\begin{itemize}
+    \item \textbf{Direct prompt injection}: instructions that override the assistant's role or system prompt.
+    \item \textbf{Indirect prompt injection}: malicious instructions embedded in third-party content the agent ingests~\cite{greshake_2023_not, yi_2024_bipia, zhan_2024_injecagent}.
+    \item \textbf{Jailbreak}: roleplay, hypothetical, or persona-bypass framings that elicit content that would otherwise be refused~\cite{mazeika_2024_harmbench, andriushchenko_2025_agentharm}.
+    \item \textbf{In-context data injection}: corrupted documents in RAG corpora or tool outputs that contain false facts.
+    \item \textbf{Model extraction}: query-based reconstruction of system prompts or memorized training data~\cite{carlini_2021_extracting, nasr_2023_scalable_extraction}.
+\end{itemize}
+
+\subsubsection{Operational risks (5 subcategories)} failures arising from system limits:
+\begin{itemize}
+    \item \textbf{Hallucination (financial domain)}: fabricated regulations, SEC/FINRA references, or quantitative answers with confident but checkably-false specifics.
+    \item \textbf{Hallucination (legal domain)}: fabricated case citations, statutes, regulations, or invented holdings. They use separate domain-specific prompt files; the observed rates are reported separately without treating the outcome difference as evidence for how the taxonomy was originally selected.
+    \item \textbf{Tool misuse}: wrong-tool selection, incorrect parameters, or unsafe call sequences.
+    \item \textbf{Context failure}: long-context recall loss, contradictory-instruction mishandling, state inconsistency.
+    \item \textbf{Resource exhaustion}: prompts that elicit unbounded output, recursion, or expensive tool sequences.
+\end{itemize}
+
+\subsubsection{Output risks (2 subcategories)} harmful consequences of generated content:
+\begin{itemize}
+    \item \textbf{Harmful content}: misinformation, fraud assistance, harassment, hate, dangerous operational instructions~\cite{mazeika_2024_harmbench}.
+    \item \textbf{Intellectual-property infringement}: verbatim reproduction of copyrighted text, code, or trademarks.
+\end{itemize}
+
+Four deployment factors not captured by the prompt itself contextualize each subcategory's elicitation severity: authority level (advisory to fully autonomous), transaction limits, system access scope, and human-in-the-loop configuration. These factors modulate operational consequence, not the elicitation rate itself, and would be needed for subsequent actuarial analysis (\Cref{sec:relatedwork}). Systemic failures of \emph{composed} multi-agent systems (cascading prompt-laundering, agent--agent manipulation) are out of scope for our single-turn model-prompt harness; see \Cref{sec:conclusion} for future work.
+
+\subsection{Pooling: Privacy-Preserving Aggregation}
+\label{sec:privacy}
+
+The proposed workflow separates raw organization-internal records, consortium aggregates, and public benchmark outputs. Experiment~2 evaluates four configurations independently: suppression-only $k$-anonymity, greedy hierarchical generalization, generalization with distinct $\ell$-diversity, and generalization with noisy aggregate means. It does not evaluate a combined four-layer deployment.
+
+The generalizer advances a quasi-identifier dimension to reduce the count of records below $k$ (\Cref{alg:kanon}); it is inspired by generalization literature~\cite{lefevre_2006_mondrian}, not an implementation of Mondrian's recursive partitioning algorithm. Distinct $\ell$-diversity requires at least $\ell$ sensitive values per published class. The Laplace ablation adds scale $25/(n_g\varepsilon)$ noise to a severity mean in group $g$. Under fixed public group membership and size, with only a bounded severity value replaceable, $25/n_g$ upper-bounds sensitivity. The full experiment also uses data-dependent generalization, selection, and group counts; no end-to-end differential-privacy guarantee is established for that release. Thus $\varepsilon$ labels a noise parameter in the experiment, not a certified privacy budget for participating organizations.
+
+\subsection{Attestation: Ed25519 with RFC~6962 Merkle Tree}
+\label{sec:attestation}
+
+The implemented Merkle tree uses the RFC~6962 tree-hash convention~\cite{laurie_2013_rfc6962}: leaf hash $=\mathsf{SHA256}(0\mathtt{x}00\Vert b)$ for serialized record bytes $b$, internal hash $=\mathsf{SHA256}(0\mathtt{x}01\Vert L\Vert R)$, and unpaired tails promoted unchanged. Domain separation distinguishes leaf and internal-node inputs. A batch requires one Ed25519 signature~\cite{bernstein_2012_ed25519}, not one signature per record.
+
+The Rust signing payload is a domain prefix followed by colon-separated schema version, decimal record count, and hexadecimal root. Its \texttt{attested\_at} and \texttt{version} fields are not signed. The current implementation therefore makes no authenticated-time claim; an external timestamp authority, transparency-log anchoring, identity certification, and key rotation are proposed integrations rather than evaluated features. Schema identifiers must be unambiguously encoded or restricted when interpreting the delimiter-based payload.
+
+Verification checks a trusted public key's signature and reconstructs the root from the record and sibling hashes with direction bits. This proves content membership under collision resistance and signature unforgeability. The current verifier does not bind the supplied leaf index to the path, so it does not prove a claimed ordinal position. It also does not establish record truth, completeness, or the signer's external identity. Rust and Python reference tests check matching tree hashes on specified byte inputs; they do not establish arbitrary JSON-serialization or manifest-signature interoperability.
+
+\begin{figure}[htbp]
+\centering
+\fbox{\begin{minipage}{0.91\columnwidth}\small
+Deployment observations + exposure (future)\\
+$\downarrow$ category measurements and context\\
+$\downarrow$ aggregation under a specified release policy\\
+$\downarrow$ signed batch commitment + membership proofs\\
+Underwriter / consortium analyst / claims auditor
+\end{minipage}}
+\caption{Intended evidence flow. The experiments evaluate components separately: prompt trials, synthetic portfolios, and synthetic record batches are different datasets.}
+\label{fig:pipeline}
+\end{figure}
+
+\subsection{Threat Model}
+\label{sec:threatmodel}
+
+Each component targets a specific adversary, chosen narrowly so each is independently testable.
+
+\paragraph{Risk-taxonomy elicitation (Exp.~1)} The adversary is the standard red-team attacker: black-box query access to a deployed model, finite budget, no model weights, and the released static prompt suite. We assume the defender has provider-side safety training but no access to private finetuning. This is related to the black-box setting used by HarmBench~\cite{mazeika_2024_harmbench} and AgentHarm~\cite{andriushchenko_2025_agentharm}.
+
+\paragraph{Privacy-preserving benchmarking (Exp.~2)} The adversary holds auxiliary information about target organizations (industry, region, approximate size) and attempts to (a)~re-identify a specific organization in a published Tier~2 benchmark (\emph{linkage attack}) or (b)~learn the sensitive value (e.g., incident rate) for an organization without identifying it, via homogeneity of an equivalence class (\emph{homogeneity attack}). We assume the adversary observes the full published Tier~2 dataset, the generalization hierarchies, the $k$, $\ell$, and $\varepsilon$ parameters, ; the evaluated attacks are specifically singleton matching and homogeneous-class inference. Zero success for these restricted simulators is not a guarantee against arbitrary inference or linkage attacks.
+
+\paragraph{Cryptographic attestation (Exp.~3)} Two adversaries.
+
+\emph{External tamper/forgery.} An attacker without signing-key access tries to (a)~modify attested records without invalidating the signature, (b)~forge a signature, or (c)~produce a false inclusion proof. Content integrity relies on signature unforgeability of Ed25519~\cite{bernstein_2012_ed25519}, SHA-256 collision resistance, and RFC~6962 leaf/internal-node domain separation~\cite{laurie_2013_rfc6962}.
+
+\emph{Insider under-reporting (insurance fraud).} An insured organization holds its own signing key and may under-report incidents by omitting records from the attested batch. Attestation cannot catch records that were never attested. It does provide a non-repudiable commitment to the attested set, which may support later auditing when corroborating records exist; no legal evidentiary conclusion is established here. Defense against omission requires complementary mechanisms (third-party incident channels, correlation against externally-observable signals, anchoring manifest roots into a transparency log~\cite{newman_2022_sigstore}), discussed in \Cref{sec:discussion}. Key compromise is outside the benchmark and motivates key-management and transparency mechanisms~\cite{laurie_2013_rfc6962}.
+
+\Cref{sec:results} reports attack-success rates and security arguments separately per component.
+
+\begin{table*}[t]
+\centering\small
+\caption{Conceptual mapping of the twelve prompt categories to OWASP LLM Top~10 (2025). Mappings describe related risks, not equivalent benchmark definitions; no direct match is asserted for the last two output categories.}
+\label{tab:crosswalk}
+\begin{tabularx}{\textwidth}{@{}p{0.12\textwidth}p{0.28\textwidth}X@{}}\toprule
+Family & Prompt category & Related OWASP risk \\\midrule
+Security & Direct injection; indirect injection; jailbreak & LLM01 Prompt Injection \\
+Security & In-context false-fact injection & LLM01 Prompt Injection; LLM09 Misinformation \\
+Security & Model extraction / prompt disclosure & LLM02 Sensitive Information Disclosure; LLM07 System Prompt Leakage \\
+Operational & Financial hallucination; legal hallucination & LLM09 Misinformation \\
+Operational & Tool misuse & LLM06 Excessive Agency \\
+Operational & Context failure & LLM09 Misinformation (partial overlap) \\
+Operational & Resource exhaustion & LLM10 Unbounded Consumption \\
+Output & Harmful content; intellectual-property reproduction & No one-to-one match \\\bottomrule
+\end{tabularx}
+\end{table*}

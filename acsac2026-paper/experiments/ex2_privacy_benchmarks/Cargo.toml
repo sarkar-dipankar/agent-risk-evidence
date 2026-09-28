@@ -1,0 +1,16 @@
+[package]
+name = "ex2-privacy-benchmarks"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ai-benchmarks = { path = "../../../agent-insure-core/crates/ai-benchmarks" }
+ai-schema = { path = "../../../agent-insure-core/crates/ai-schema" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+rand = "0.8"
+chrono = "0.4"
+
+[[bin]]
+name = "ex2-privacy-benchmarks"
+path = "src/main.rs"
